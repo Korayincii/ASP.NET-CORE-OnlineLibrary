@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "AdminHeaderPartial";
+}
+
+@if (TempData["status"] != null)
+{
+    <div class="alert alert-secondary" role="alert">
+        @TempData["status"]
+    </div>
+}
+@model List<Books>;
+<head>
+    <link rel="stylesheet" href="~/css/lib.css" asp-append-version="true" />
+</head>
+<h1>Library</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Relase Date</th>
+            <th>Pages</th>
+            <th>Author</th>
+            <th>Link</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookID</td>
+                <td>@item.Name</td>
+                <td>@item.Genre</td>
+                <td>@item.ReleaseDate</td>
+                <td>@item.Pages</td>
+                <td>@item.Author</td>
+                <td><a target="_blank" href="@item.Link">Read Now</a></td>
+                <td>
+                    <a id="operation" asp-controller="admin" asp-action="DeleteBook" asp-route-id="@item.BookID">Delete</a>
+                    <a id="operation" asp-controller="Admin" asp-action="UpdateBook" asp-route-id="@item.BookID">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button style="background-color:transparent" onclick="topFunction()" id="myBtn" title="Go to top">
+    <lord-icon src="https://cdn.lordicon.com/gdevhieu.json"
+               trigger="loop"
+               colors="outline:#121331,primary:#646e78,secondary:#ebe6ef"
+               style="width:50px;height:50px">
+    </lord-icon>
+</button>
+

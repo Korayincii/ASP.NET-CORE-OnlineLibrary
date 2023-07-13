@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <style>
+        body {
+            background-image: url(./book2.png);
+            background-repeat: no-repeat;
+            background-size: 1600px 800px;
+        }
+
+        h3 {
+            margin-left: 50px;
+        }
+
+        a {
+            color: #148597;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Welcome to Online Library</h2>
+    <h3><a id="logres" asp-controller="User" asp-action="Login">Login</a> or <a id="logres" asp-controller="User" asp-action="Register">Register</a> </h3>
+</body>

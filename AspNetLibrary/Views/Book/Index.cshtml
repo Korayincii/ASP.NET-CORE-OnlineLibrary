@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "LibraryHeaderPartial";
+}
+@model List<Books>;
+<head>
+    <link rel="stylesheet" href="~/css/lib.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/38d09f413a.js" crossorigin="anonymous"></script>
+</head>
+<h1>Library</h1>
+
+<form asp-controller="Book" asp-action="Index" method="post">
+    <select name="combo" id="combo" >
+        <option selected disabled name="combo" value="Search by">Search By</option>
+        <option name="combo" value="Name">Name</option>
+        <option name="combo" value="Genre">Genre</option>
+        <option name="combo" value="Author">Author</option>
+    </select>
+    <input required oninvalid="this.setCustomValidity('Please fill this area to search')" type="search" id="sbox" name="name" />
+    <input style="width:25px; margin-left:10px" type="image" src="./magnifying-glass-solid (5).png" alt="Submit" name="name" />
+    <input style="width:25px; margin-left:10px" type="image" src="./refresh.png" onClick="location.href=location.href" />
+    <br /> <br />
+
+
+
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Relase Date</th>
+            <th>Pages</th>
+            <th>Author</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Genre</td>
+                <td>@item.ReleaseDate</td>
+                <td>@item.Pages</td>
+                <td>@item.Author</td>
+                <td><a target="_blank" href="@item.Link">Read Now</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button style="background-color:transparent" onclick="topFunction()" id="myBtn" title="Go to top">
+    <lord-icon src="https://cdn.lordicon.com/gdevhieu.json"
+               trigger="loop"
+               colors="outline:#121331,primary:#646e78,secondary:#ebe6ef"
+               style="width:50px;height:50px">
+    </lord-icon>
+</button>
